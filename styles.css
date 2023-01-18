@@ -1,0 +1,57 @@
+
+.formulario , .apuestas{
+    background-color:rgb(3, 70, 3);
+    opacity: 0.92    ;
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid rgb(240, 240, 183);
+    padding: 20px;
+    margin: 20px; 
+}
+.selecciones{
+    font-family: "Raleway", sans-serif;
+    opacity: 100;
+    color: rgb(240, 240, 183);
+}
+
+.input {
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+
+}
+body{
+    background-image: url("./imagenes/grass-background-lawn-green-wallpaper-preview.jpg");
+}
+
+
+h1 {
+    font-family: "Raleway", sans-serif;
+    color: rgb(3, 70, 3);
+    background-color:rgb(240, 240, 183) ;
+    border: 5px solid rgb(240, 240, 183);
+    padding-left: 20px;
+    margin: 20px;
+}
+
+h2 {
+    font-family: "Raleway", sans-serif;
+    color: rgb(3, 70, 3);
+    background-color:rgb(240, 240, 183) ;
+    padding-left: 20px;
+    margin: 20px;
+}
+h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: medium;
+    color: rgb(240, 240, 183);
+    margin-bottom: 5px;
+}
+.btn{
+    font-family: "Raleway", sans-serif;
+    color: rgb(3, 70, 3);
+    background-color:rgb(240, 240, 183) ;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    height: 30px;
+}
