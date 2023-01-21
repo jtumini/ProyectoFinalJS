@@ -11,27 +11,25 @@
 </head>
 <body>
     
-    <h1>Tercera Preentrega - Tumini</h1>
+    <H1>PROYECTO FINAL - Tumini</H1>
         <H2>Simulador de apuestas</H2>
-
-    
-        <h2>Argentina vs. Francia</h2>
+        <H2>Argentina vs. Francia</h2>
         <div class="formulario">
-        <form id="formulario"  >
-            <h3 class="selecciones">
-            Argentina paga: 1.25
-            Francia paga: 1.72
-            El empate paga: 3.60
-            </h3>
-            <h3 class="selecciones">Argentina:</h3> <input class="input" type="number" id="local"  placeholder="goles" />
-            <h3 class="selecciones">Francia:</h3> <input class="input" type="number" id="visitante" placeholder="goles" />
-            <h3 class="selecciones">Dinero a apostar:</h3> <input class="input" type="number" id="apuesta" placeholder="$" />
-            <button id="btn" class="btn"  > Realizar apuesta </button>
-        </form>
-
-        <!-- <button id="btnApuesta" class="btn"  > Realizar apuesta </button> -->
+            <form id="formulario"  >
+                <h3 class="selecciones">
+                Argentina paga: 1.25
+                Francia paga: 1.72
+                El empate paga: 3.60
+                </h3>
+                <h3 class="selecciones">Argentina:</h3> <input class="input" type="number" min="0" id="local"  placeholder="goles" />
+                <h3 class="selecciones">Francia:</h3> <input class="input" type="number" min="0" id="visitante" placeholder="goles" />
+                <h3 class="selecciones">Dinero a apostar:</h3> <input class="input" type="number" min="1" id="apuesta" placeholder="$" />
+                <button id="btn" class="btn"  > Realizar apuesta </button>
+            </form>
         </div>
-        <div id="apuestaSemiA"><h2>Tus Apuestas:</h2></div>
+
+        <div id="apuestaSemiA"></div>
+        <!-- <div id="apuestaSemiA"><h2>Tus Apuestas:</h2></div> -->
 
     <!-- AGREGUE EL SCRIPT DE CDN TOASTIFY  -->
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
