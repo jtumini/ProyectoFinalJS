@@ -1,14 +1,7 @@
 const formulario = document.getElementById("formulario")
+const boton = document.getElementById("btnApuesta")
+const btn = document.getElementById("btn")
 
-// AGREGUE EL CONST DEL BOTON
-const boton = document.getElementById("btn");
-// AGREGUE EL CONST DEL BOTON
-
-// AGREGUE LA ACCION DEL BOTON
-boton.onclick = () => {
-    Swal.fire('Any fool can use a computer')
-}
-// AGREGUE LA ACCION DEL BOTON
 
 class goles {
         constructor(local, visitante, apuesta,ganador,ganancia){
@@ -21,7 +14,7 @@ class goles {
     }
 
 const Argentina = 1.25
-const Croacia = 1.72
+const Francia = 1.72
 const Empate = 3.60 
 
 let divApuestas = document.getElementById("apuestaSemiA");
@@ -41,8 +34,8 @@ const nuevaApuesta = () => {
         ganador = "Argentina"
         ganancia = parseInt(calcularApuesta(apuesta,Argentina)) 
     }else if(local < visitante){
-        ganador = "Croacia"
-        ganancia = parseInt(calcularApuesta(apuesta,Croacia)) 
+        ganador = "Francia"
+        ganancia = parseInt(calcularApuesta(apuesta,Francia)) 
     }else{
         ganador = "Empate"
         ganancia = parseInt(calcularApuesta(apuesta,Empate))
@@ -55,20 +48,6 @@ const nuevaApuesta = () => {
 
 
 
-
-const mostrarApuestas = () => { 
-
-    listaApuestas.forEach (goles => {
-        divApuestas.innerHTML += `
-            <div class='apuestas'>
-            <h3>Tu apuesta por $${goles.apuesta} a Argentina:${goles.local} - Croacia:${goles.visitante} 
-            . tiene una Ganancia de: $${goles.ganancia}</h3>
-            </div>
-            `
-        
-    })
-}
-
 const promedioApuestas = () => { 
     let sumaEl = listaApuestas.reduce((total, listaApuestas) => {
         return total + parseInt(listaApuestas.local) +  parseInt(listaApuestas.visitante)
@@ -78,10 +57,65 @@ const promedioApuestas = () => {
     divApuestas.innerHTML += `<div class='apuestas'><h3>El promedio de goles por apuesta es de:${promedio}</h3></div>`
 }
 
-
-formulario.onsubmit = (e) => {
-    nuevaApuesta();
+// const mostrarApuestas = () => { 
+//     listaApuestas.forEach (goles => {
+//         divApuestas.innerHTML += `
+//             <div class='apuestas'>
+//             <h3>Tu apuesta por $${goles.apuesta} a Argentina:${goles.local} - Francia:${goles.visitante} 
+//             . tiene una Ganancia de: $${goles.ganancia}</h3>
+//             </div>
+//             `
+//     })
+// }
+const mostrarApuestas = () => {
+    divApuestas.innerHTML = ""
+    listaApuestas.forEach (goles => {
+        divApuestas.innerHTML += `
+            <div class='apuestas'>
+            <h3>Tu apuesta por $${goles.apuesta} a Argentina:${goles.local} - Francia:${goles.visitante} 
+            . tiene una Ganancia de: $${goles.ganancia}</h3>
+            </div>
+        `
+    })
 }
+//////////////////// VALIDACION Y SUBMIT DEL FORMULARIO ////////////////////
+const form = document.getElementById('form');
 
-mostrarApuestas();
-promedioApuestas();
+formulario.addEventListener('submit', event => {
+    event.preventDefault();
+    const local = document.getElementById("local").value;
+    const visitante = document.getElementById("visitante").value;
+    const apuesta = document.getElementById("apuesta").value;
+    validateForm(local, visitante, apuesta)
+        .then(() => {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apuesta Realizada',
+                icon: 'success'
+            });
+            nuevaApuesta();
+            mostrarApuestas();
+            promedioApuestas();
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Debes completar todos los campos',
+                icon: 'error',
+            });
+        }); 
+    });
+
+const validateForm = (local, visitante, apuesta) => {
+    return new Promise((resolve, reject) => {
+        if (!local || !visitante || !apuesta) {
+            reject('Todos los campos son necesarios');
+        } else if (isNaN(local) || isNaN(visitante) || isNaN(apuesta)) {
+            reject('Los campos deben contener solo numeros');
+        } else {
+            resolve();
+        }
+    });
+}
+//////////////////////////////////////////////////////////////
+// promedioApuestas();
+// mostrarApuestas();
